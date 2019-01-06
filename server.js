@@ -25,7 +25,7 @@ function runServer() {
   });
 }
 
-function closeSever() {
+function closeServer() {
   return new Promise((resolve, reject) => {
     console.log(`Closing server`);
     server.close(err => {
@@ -41,7 +41,7 @@ if (require.main === module) {
   runServer().catch(err => console.error(err));
 }
 
-module.exports = {app, runServer, closeSever};
+module.exports = {app, runServer, closeServer};
 
 /*app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is running on port ${process.env.PORT || 8080}`);
