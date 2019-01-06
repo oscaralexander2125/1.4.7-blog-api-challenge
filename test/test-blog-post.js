@@ -22,7 +22,7 @@ describe('Blog Post', function() {
     .then(function(res) {
       expect(res).to.have.status(200);
       expect(res).to.be.json;
-      expect(res).to.be.a('array');
+      expect(res.body).to.be.a('array');
       expect(res.body.length).to.be.at.least(1);
       const expectedKeys = ['id', 'content', 'title', 'author'];
       res.body.forEach(function(item) {
@@ -41,7 +41,7 @@ describe('Blog Post', function() {
     return chai.request(app)
     .post('/blog-posts')
     .send(newItem)
-    .then(function() {
+    .then(function(res) {
       expect(res).to.have.status(201);
       expect(res).to.be.json;
       expect(res.body).to.be.a('object');
@@ -53,7 +53,9 @@ describe('Blog Post', function() {
 
   it('should update a post on PUT', function() {
     const updateData= {
-      content: 'nevermind'
+      title: 'dog',
+      content: 'nevermind',
+      author: 'blanca'
     };
     return chai.request(app)
     .get('/blog-posts')
