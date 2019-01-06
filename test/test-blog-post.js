@@ -47,7 +47,6 @@ describe('Blog Post', function() {
       expect(res.body).to.be.a('object');
       expect(res.body).to.include.keys('id', 'title', 'content', 'author');
       expect(res.body.id).to.not.equal(null);
-      expect(res.body).to.deep.equal(Object.assign(newItem, {id: res.body.id}));
     });
   });
 
